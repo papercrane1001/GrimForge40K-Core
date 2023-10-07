@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace Grimforge
     /// "Charge!"     Aura which gives melee attack cooldown reduction, dodge chance, bonus movement speed, automatic switch weapons to melee (if possible) (if its possible to code)
     /// "Grappling hook"     Dash which need to be "connect" to wall
     /// </summary>
+    /// 
+
+    public class GFAA_AbilityActive : Ability
+    {
+        public float GFAA_Cost { get; set; }
+    }
     public abstract class Ability_Active
     {
         public Pawn pawn;

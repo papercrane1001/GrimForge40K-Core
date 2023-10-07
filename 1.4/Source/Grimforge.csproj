@@ -39,8 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyMod">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\HarmonyMod.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,6 +100,8 @@
     <Compile Include="Dialog_WarcasketCustomization_DoPartsSelect_Patch.cs" />
     <Compile Include="Dialog_WarcasketCustomization_DoWindowContents_Patch.cs" />
     <Compile Include="FortyKCasketDef.cs" />
+    <Compile Include="GFAA_ActiveAbilityDefOf.cs" />
+    <Compile Include="GFAA_PassiveAbilityDefOf.cs" />
     <Compile Include="GFAA_StatDefOf.cs" />
     <Compile Include="GF_JobDefOf.cs" />
     <Compile Include="Gizmo_ArmorEnergyStatus.cs" />

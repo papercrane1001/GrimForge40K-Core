@@ -34,6 +34,28 @@ namespace Grimforge
 
 
     /// </summary>
+    /// 
+
+    public class GFAA_AbilityPassive : Ability
+    {
+        public HediffDef HediffUsed { get; set; }
+        public virtual void GiveHediff()
+        {
+            Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
+            hediff.Severity = 0.5f;
+            pawn.health.AddHediff(hediff);
+        }
+        public virtual void TakeHediff()
+        {
+            Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
+            pawn.health.RemoveHediff(hediff);
+            
+        }
+
+        public float GFAA_Drain { get; set; }
+    }
+
+
     public abstract class Ability_Passive
     {
         public Pawn pawn;

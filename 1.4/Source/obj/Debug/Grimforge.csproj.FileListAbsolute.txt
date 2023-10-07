@@ -2,3 +2,4 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GrimForge40K-Core\1.
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GrimForge40K-Core\1.4\Source\obj\Debug\Grimforge.csproj.AssemblyReference.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GrimForge40K-Core\1.4\Source\obj\Debug\Grimforge.csproj.CoreCompileInputs.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GrimForge40K-Core\1.4\Source\obj\Debug\Grimforge.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GrimForge40K-Core\1.4\Source\obj\Debug\Grimforge.csproj.CopyComplete
