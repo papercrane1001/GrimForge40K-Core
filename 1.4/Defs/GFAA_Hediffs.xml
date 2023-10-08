@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<HediffDef>
-	<defName>GFAA_PoweredMode</defName>
+	<defName>GFAA_HediffPoweredMode</defName>
 	<hediffClass>Hediff_High</hediffClass>
     <label>power armor assisted</label>
     <labelNoun>a power armor assist</labelNoun>
@@ -38,7 +38,7 @@
   </HediffDef>
   
   <HediffDef>
-	<defName>GFAA_Overdrive</defName>
+	<defName>GFAA_HediffOverdrive</defName>
 	<hediffClass>Hediff_High</hediffClass>
     <label>power armor assisted</label>
     <labelNoun>a power armor assist</labelNoun>
@@ -75,7 +75,7 @@
   </HediffDef>
   
   <HediffDef>
-	<defName>GFAA_HealingSpecialist</defName>
+	<defName>GFAA_HediffHealingSpecialist</defName>
 	<hediffClass>Hediff_High</hediffClass>
     <label>power armor assisted</label>
     <labelNoun>a power armor assist</labelNoun>

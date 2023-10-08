@@ -12,9 +12,9 @@ namespace Grimforge
     [DefOf]
     public class HediffDefOf
     {
-        public static HediffDef GFAA_PoweredMode;
-        public static HediffDef GFAA_HealingSpecialist;
-        public static HediffDef GFAA_TEST;
-        public static HediffDef GFAA_Overdrive;
+        public static HediffDef GFAA_HediffPoweredMode;
+        public static HediffDef GFAA_HediffHealingSpecialist;
+        public static HediffDef GFAA_HediffTEST;
+        public static HediffDef GFAA_HediffOverdrive;
     }
 }

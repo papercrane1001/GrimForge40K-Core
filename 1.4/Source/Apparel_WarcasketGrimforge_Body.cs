@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -152,10 +153,21 @@ namespace Grimforge
             if (Prefs.DevMode)
             {
                 //Log.Message("ifDevMode within GetWornGizmos firing");
+                GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, GFAA_PassiveAbilityDefOf.GFAA_TEST);
+                //yield return new Command_Toggle
+                //{
+                //    defaultLabel = "GF.TestPassiveLabelNEW".Translate(),
+                //    defaultDesc = "GF.TEstPassiveLabelNEW".Translate(),
+                //    isActive = () => test.Casting,
+                //    //toggleAction = delegate { }
+                //    toggleAction = test
+                //}
+                yield return test.gizmo;
+
                 yield return new Command_Toggle
                 {
-                    defaultLabel = "GF.TestPassiveLabel".Translate(),
-                    defaultDesc = "GF.TestPassiveDesc".Translate(),
+                    defaultLabel = "GF.TestPassiveLabelOLD".Translate(),
+                    defaultDesc = "GF.TestPassiveDescOLD".Translate(),
                     //hotkey
                     icon = ContentFinder<Texture2D>.Get("TEST/chest"),
                     //isActive = () => IsActive()
@@ -165,19 +177,20 @@ namespace Grimforge
 
                 yield return new Command_Action
                 {
-                    defaultLabel = "GF.TestActiveHalveLabel".Translate(),
-                    defaultDesc = "GF.TestActiveHalveDesc".Translate(),
+                    defaultLabel = "GF.TestActiveHalveLabelOLD".Translate(),
+                    defaultDesc = "GF.TestActiveHalveDescOLD".Translate(),
                     //icon
                     action = delegate { TestHalveEnergyAction(); }
                 };
                 //yield return new Command_Action
                 Command_Action subtract = new Command_Action
                 {
-                    defaultLabel = "GF.TestActiveSubtractLabel".Translate(),
-                    defaultDesc = "GF.TestActiveSubtractDesc".Translate(),
+                    defaultLabel = "GF.TestActiveSubtractLabelOLD".Translate(),
+                    defaultDesc = "GF.TestActiveSubtractDescOLD".Translate(),
                     //icon
                     action = delegate { TestRemoveEnergyAction(); }                    
                 };
+
                 if(energy < 25) { subtract.disabled = true; }
                 yield return subtract;
                 yield return new Command_Action

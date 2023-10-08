@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<HediffDef>
+  
+  <Grimforge.GFAA_PassiveAbilityDef>
 	<defName>GFAA_TEST</defName>
+	<HediffUsed>GFAA_HediffTEST</HediffUsed>
+	<GFAA_Drain>1.0f</GFAA_Drain>
+	<gizmoClass>Command_Toggle</gizmoClass>
+	<abilityClass>GFAA_AbilityPassive</abilityClass>
+	
+	
+	</Grimforge.GFAA_PassiveAbilityDef>
+	
+	
+	<HediffDef>
+	<defName>GFAA_HediffTEST</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<comps>
       <li Class="HediffCompProperties">

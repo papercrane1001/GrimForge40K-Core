@@ -53,6 +53,14 @@ namespace Grimforge
         }
 
         public float GFAA_Drain { get; set; }
+
+        GFAA_PassiveAbilityDef GFAA_ablity { get; set; }
+
+        public GFAA_AbilityPassive(Pawn wearer, GFAA_PassiveAbilityDef ability) : base(wearer)
+        {
+            def = (AbilityDef)ability;
+            GFAA_ablity = ability;
+        }
     }
 
 
@@ -108,7 +116,7 @@ namespace Grimforge
         public OverdriveAbility(Pawn wearer) : base(wearer)
         {
             pawn = wearer;
-            HediffUsed = HediffDefOf.GFAA_Overdrive;
+            HediffUsed = HediffDefOf.GFAA_HediffOverdrive;
             Name = "OverdriveAbility";
             Active = false;
             Drain = 0.01f;
@@ -136,13 +144,13 @@ namespace Grimforge
             Active = state;
             if (Active)
             {
-                Hediff hediff = HediffMaker.MakeHediff( HediffDefOf.GFAA_TEST, pawn);
+                Hediff hediff = HediffMaker.MakeHediff( HediffDefOf.GFAA_HediffTEST, pawn);
                 hediff.Severity = 0.5f;
                 pawn.health.AddHediff(hediff);
             }
             else
             {
-                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_TEST, pawn);
+                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_HediffTEST, pawn);
                 pawn.health.RemoveHediff(hediff);
             }
         }
@@ -152,14 +160,14 @@ namespace Grimforge
             if (Active)
             {
                 //Log.Message("Ping Hediff Creation");
-                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_TEST, pawn);
+                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_HediffTEST, pawn);
                 hediff.Severity = 0.5f;
                 pawn.health.AddHediff(hediff);
                 Log.Message("Ping Hediff Flip");
             }
             else
             {
-                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_TEST, pawn);
+                Hediff hediff = HediffMaker.MakeHediff(HediffDefOf.GFAA_HediffTEST, pawn);
                 pawn.health.RemoveHediff(hediff);
             }
         }
