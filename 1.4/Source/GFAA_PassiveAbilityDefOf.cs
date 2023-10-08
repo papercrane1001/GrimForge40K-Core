@@ -11,8 +11,10 @@ namespace Grimforge
 {
     public class GFAA_PassiveAbilityDef : AbilityDef
     {
-        public HediffDef HediffUsed { get; set; }
-        public string GFAA_Drain { get; set; }
+        public HediffDef HediffUsed;
+        public float GFAA_Drain;
+        public string testStringA;
+        //public string test
     }
 
     [DefOf]
