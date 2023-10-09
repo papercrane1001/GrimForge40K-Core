@@ -16,7 +16,7 @@ namespace Grimforge
         public float maxEnergyAmount;
         //public List<Ability_Active> ac
         //public List<Ability_Passive> passive_Abilities = new List<Ability_Passive>();
-
+        public List<GFAA_PassiveAbilityDef> passives;
 
 
 

@@ -38,7 +38,7 @@ namespace Grimforge
 
     public class GFAA_AbilityPassive : Ability
     {
-        public HediffDef HediffUsed { get; set; }
+        public HediffDef HediffUsed { get { return GFAA_ability.HediffUsed; } set { GFAA_ability.HediffUsed = value; } }
         public virtual void GiveHediff()
         {
             Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
@@ -52,14 +52,16 @@ namespace Grimforge
             
         }
 
-        public float GFAA_Drain { get; set; }
+        //public List<GFAA_AbilityPassive> passives;
 
-        GFAA_PassiveAbilityDef GFAA_ablity { get; set; }
+        public float GFAA_Drain { get { return GFAA_ability.GFAA_Drain; } set { GFAA_ability.GFAA_Drain = value; } }
+
+        GFAA_PassiveAbilityDef GFAA_ability { get; set; }
 
         public GFAA_AbilityPassive(Pawn wearer, GFAA_PassiveAbilityDef ability) : base(wearer)
         {
             def = (AbilityDef)ability;
-            GFAA_ablity = ability;
+            GFAA_ability = ability;
         }
     }
 

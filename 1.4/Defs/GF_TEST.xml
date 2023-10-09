@@ -7,9 +7,11 @@
 	<defName>GFAA_TEST</defName>
 	<HediffUsed>GFAA_HediffTEST</HediffUsed>
 	<GFAA_Drain>1.0</GFAA_Drain>
-	<testStringA>testStringA</testStringA>
 	<gizmoClass>Command_Toggle</gizmoClass>
-	<abilityClass>GFAA_AbilityPassive</abilityClass>
+	<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
+	<label>Test1</label>
+	<description>Test1Desc</description>
+	<verbProperties></verbProperties>
 	
 	
 	</Grimforge.GFAA_PassiveAbilityDef>

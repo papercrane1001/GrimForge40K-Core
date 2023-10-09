@@ -80,6 +80,9 @@
 				</texPaths>
 			</li>
 		</comps>
+		<passives>
+			<li>GFAA_TEST</li>
+		</passives>
 	</Grimforge.FortyKCasketDef>
 	
 	<VFEPirates.WarcasketDef ParentName="VFEP_WarcasketShoulderPadBase">

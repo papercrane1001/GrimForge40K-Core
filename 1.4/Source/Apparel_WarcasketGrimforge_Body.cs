@@ -18,7 +18,25 @@ namespace Grimforge
         public Apparel_Warcasket helm;
         public Apparel_Warcasket pads;
 
-        //public 
+        public List<GFAA_AbilityPassive> passives;
+        public List<GFAA_AbilityPassive> Passives
+        {
+            get
+            {
+                Log.Message("Ping1");
+                if (passives == null)
+                {
+                    Log.Message("Ping2");
+                    //GFAA_AbilityPassive test = Activator.CreateInstance<GFAA_AbilityPassive>();
+                    Log.Message("V passives count: " + def.passives.Count.ToString());
+                    GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, def.passives[0]);
+                    //test.def = def.passives[0];
+                    return new List<GFAA_AbilityPassive>() {  test };
+
+                }
+                else return passives;
+            }
+        }
         public List<Ability_Passive> AllPassiveAbilities
         {
             get
@@ -70,6 +88,8 @@ namespace Grimforge
         {
             get
             {
+                //Debug
+
                 List<Ability_Active> list = abilities_Active;
                 if (helm != null && helm is Apparel_WarcasketGrimforge_Helm)
                 {
@@ -153,7 +173,9 @@ namespace Grimforge
             if (Prefs.DevMode)
             {
                 //Log.Message("ifDevMode within GetWornGizmos firing");
-                GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, GFAA_PassiveAbilityDefOf.GFAA_TEST);
+                //Log.Message("Ping1");
+                //GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, GFAA_PassiveAbilityDefOf.GFAA_TEST);
+                //Log.Message("Ping2");
                 //yield return new Command_Toggle
                 //{
                 //    defaultLabel = "GF.TestPassiveLabelNEW".Translate(),
@@ -162,7 +184,14 @@ namespace Grimforge
                 //    //toggleAction = delegate { }
                 //    toggleAction = test
                 //}
-                yield return test.gizmo;
+                //Log.Message(test.gizmo.Desc);
+                //yield return test.gizmo;
+                Log.Message("Passives Count: ");
+                Log.Message(Passives.Count().ToString());
+                for(int i = 0; i < Passives.Count; ++i)
+                {
+                    yield return Passives[i].gizmo;
+                }
 
                 yield return new Command_Toggle
                 {
@@ -259,6 +288,7 @@ namespace Grimforge
         {
             base.ExposeData();
             Scribe_Values.Look(ref energy, "energy");
+            //Scribe_Values.Look
         }
         //public FortyKCasketDef def => base.def as FortyKCasketDef;
 
