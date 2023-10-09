@@ -11,9 +11,14 @@
 	<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 	<label>Test1</label>
 	<description>Test1Desc</description>
-	<verbProperties></verbProperties>
-	
-	
+	<verbProperties>
+		<verbClass>Verb_CastAbility</verbClass>
+		<label>Test1VerbLabel</label>
+		<drawAimPie>false</drawAimPie>
+		<targetParams>
+			<canTargetSelf>true</canTargetSelf>
+		</targetParams>
+	</verbProperties>
 	</Grimforge.GFAA_PassiveAbilityDef>
 	
 	

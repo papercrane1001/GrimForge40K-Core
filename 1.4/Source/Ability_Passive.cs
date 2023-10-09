@@ -10,6 +10,8 @@ using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
+//using VFECore.Abilities;
+
 namespace Grimforge
 {
     /// <summary>
