@@ -36,6 +36,7 @@ namespace Grimforge
                     //GFAA_AbilityPassive test = Activator.CreateInstance<GFAA_AbilityPassive>();
                     Log.Message("V passives count: " + def.passives.Count.ToString());
                     GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, def.passives[0]);
+                    Log.Message("Passed creation of test");
                     //test.def = def.passives[0];
                     passives.Add(test);
                     return passives;
