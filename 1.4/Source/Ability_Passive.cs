@@ -40,6 +40,7 @@ namespace Grimforge
 
     public class GFAA_AbilityPassive : Ability
     {
+        public bool Active = false;
         public HediffDef HediffUsed { get { return GFAA_ability.HediffUsed; } set { GFAA_ability.HediffUsed = value; } }
         public virtual void GiveHediff()
         {
@@ -53,6 +54,30 @@ namespace Grimforge
             pawn.health.RemoveHediff(hediff);
             
         }
+        public virtual void Set(bool state)
+        {
+            Active = state;
+            if (Active)
+            {
+                GiveHediff();
+            }
+            else
+            {
+                TakeHediff();
+            }
+        }
+        public virtual void Toggle()
+        {
+            Active = !Active;
+            if (Active)
+            {
+                GiveHediff();
+            }
+            else
+            {
+                TakeHediff();
+            }
+        }
 
         //public List<GFAA_AbilityPassive> passives;
 
@@ -64,6 +89,20 @@ namespace Grimforge
         {
             def = (AbilityDef)ability;
             GFAA_ability = ability;
+
+            gizmo = new Command_Toggle()
+            {
+                //defaultLabel = "GF.TestPassiveLabelOLD".Translate(),
+                defaultLabel = ability.label,
+
+                defaultDesc = ability.description,
+                //hotkey
+                //icon = ContentFinder<Texture2D>.Get("TEST/chest"),
+                icon = ContentFinder<Texture2D>.Get("TEST/chest"),
+                //isActive = () => IsActive()
+                isActive = () => Active,
+                toggleAction = delegate { Toggle(); }
+            };
         }
     }
 

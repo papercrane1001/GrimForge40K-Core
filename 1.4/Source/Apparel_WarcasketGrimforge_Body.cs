@@ -27,12 +27,9 @@ namespace Grimforge
                 if (passives == null)
                 {
                     passives = new List<GFAA_AbilityPassive>();
-                    //Log.Message("Ping2");
-                    //GFAA_AbilityPassive test = Activator.CreateInstance<GFAA_AbilityPassive>();
-                    //Log.Message("V passives count: " + def.passives.Count.ToString());
+                    Log.Message("def.passives.Count: " + def.passives.Count.ToString());
                     GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, def.passives[0]);
-                    //Log.Message("Passed creation of test");
-                    //test.def = def.passives[0];
+                    if(test.gizmo == null) { Log.Message("test.gizmo null"); }
                     passives.Add(test);
                     return passives;
 
@@ -191,11 +188,14 @@ namespace Grimforge
                 //yield return test.gizmo;
                 //Log.Message("Passives Count: ");
                 //Log.Message(Passives.Count().ToString());
-                for(int i = 0; i < Passives.Count; ++i)
-                {
-                    Log.Message(Passives.Count.ToString());
-                    yield return Passives[i].gizmo;
-                }
+                //for(int i = 0; i < Passives.Count; ++i)
+                //{
+                //    Log.Message(Passives.Count.ToString());
+                //    yield return Passives[i].gizmo;
+                //}
+                //Log.Message("Passives: " + Passives.Count.ToString());
+                //Log.Message(Passives[0].)
+                yield return Passives[0].gizmo;
 
                 yield return new Command_Toggle
                 {

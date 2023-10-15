@@ -7,7 +7,6 @@
 	<defName>GFAA_TEST</defName>
 	<HediffUsed>GFAA_HediffTEST</HediffUsed>
 	<GFAA_Drain>1.0</GFAA_Drain>
-	<gizmoClass>Command_Toggle</gizmoClass>
 	<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 	<label>Test1</label>
 	<description>Test1Desc</description>
