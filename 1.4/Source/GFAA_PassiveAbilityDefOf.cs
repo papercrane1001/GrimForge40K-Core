@@ -13,6 +13,7 @@ namespace Grimforge
     {
         public HediffDef HediffUsed;
         public float GFAA_Drain;
+        public bool DevMode;
         //public string testStringA;
         //public string test
         //public List<GFAA_AbilityPassive> passives;
