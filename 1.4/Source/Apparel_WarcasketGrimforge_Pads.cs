@@ -18,10 +18,11 @@ namespace Grimforge
                 if (passives == null)
                 {
                     passives = new List<GFAA_AbilityPassive>();
-                    //Log.Message("def.passives.Count: " + def.passives.Count.ToString());
-                    GFAA_AbilityPassive test = new GFAA_AbilityPassive(Wearer, def.passives[0]);
-                    if (test.gizmo == null) { Log.Message("test.gizmo null"); }
-                    passives.Add(test);
+                    for (int i = 0; i < def.passives.Count; ++i)
+                    {
+                        GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[0]);
+                        passives.Add(temp);
+                    }
                     return passives;
 
                 }

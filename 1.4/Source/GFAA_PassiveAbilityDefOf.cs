@@ -24,6 +24,7 @@ namespace Grimforge
     {
         public static GFAA_PassiveAbilityDef GFAA_PoweredMode;
         public static GFAA_PassiveAbilityDef GFAA_Overdrive;
+        public static GFAA_PassiveAbilityDef GFAA_HealingSpecialist;
         public static GFAA_PassiveAbilityDef GFAA_TEST;
     }
 }

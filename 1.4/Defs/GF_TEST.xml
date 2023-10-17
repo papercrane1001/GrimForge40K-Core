@@ -18,7 +18,7 @@
 			<canTargetSelf>true</canTargetSelf>
 		</targetParams>
 	</verbProperties>
-	<devMode>true</devMode>
+	<DevMode>true</DevMode>
 	<iconPath>TEST/chest</iconPath>
 	</Grimforge.GFAA_PassiveAbilityDef>
 	

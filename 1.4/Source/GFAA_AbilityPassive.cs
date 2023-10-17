@@ -41,7 +41,7 @@ namespace Grimforge
     public class GFAA_AbilityPassive : Ability
     {
         public bool Active = false;
-        public HediffDef HediffUsed { get { return GFAA_ability.HediffUsed; } set { GFAA_ability.HediffUsed = value; } }
+        public HediffDef HediffUsed { get { return GFAA_abilitydef.HediffUsed; } set { GFAA_abilitydef.HediffUsed = value; } }
         public virtual void GiveHediff()
         {
             Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
@@ -81,16 +81,16 @@ namespace Grimforge
 
         //public List<GFAA_AbilityPassive> passives;
 
-        public float GFAA_Drain { get { return GFAA_ability.GFAA_Drain; } set { GFAA_ability.GFAA_Drain = value; } }
+        public float GFAA_Drain { get { return GFAA_abilitydef.GFAA_Drain; } set { GFAA_abilitydef.GFAA_Drain = value; } }
 
-        public GFAA_PassiveAbilityDef GFAA_ability { get; set; }
+        public GFAA_PassiveAbilityDef GFAA_abilitydef { get; set; }
 
-        public bool DevMode { get { return GFAA_ability.DevMode; } }
+        public bool DevMode { get { return GFAA_abilitydef.DevMode; } }
 
         public GFAA_AbilityPassive(Pawn wearer, GFAA_PassiveAbilityDef ability) : base(wearer)
         {
             def = (AbilityDef)ability;
-            GFAA_ability = ability;
+            GFAA_abilitydef = ability;
 
             gizmo = new Command_Toggle()
             {
