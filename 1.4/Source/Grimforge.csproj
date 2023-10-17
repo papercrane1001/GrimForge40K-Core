@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ability_Active.cs" />
-    <Compile Include="Ability_Passive.cs" />
     <Compile Include="ApparelGraphicRecordGetter_TryGetGraphicApparel_Patch.cs" />
     <Compile Include="Apparel_WarcasketGrimforge.cs" />
     <Compile Include="Apparel_WarcasketGrimforge_Body.cs" />
@@ -97,6 +96,7 @@
     <Compile Include="Dialog_WarcasketCustomization_DoPartsSelect_Patch.cs" />
     <Compile Include="Dialog_WarcasketCustomization_DoWindowContents_Patch.cs" />
     <Compile Include="FortyKCasketDef.cs" />
+    <Compile Include="GFAA_AbilityPassive.cs" />
     <Compile Include="GFAA_ActiveAbilityDefOf.cs" />
     <Compile Include="GFAA_PassiveAbilityDefOf.cs" />
     <Compile Include="GFAA_StatDefOf.cs" />
