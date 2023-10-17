@@ -114,6 +114,147 @@
   </HediffDef>
   
   <HediffDef>
+	<defName>GFAA_HediffPsyker</defName>
+	<hediffClass>Hediff_High</hediffClass>
+    <label>power armor assisted </label>
+    <labelNoun>a power armor assist</labelNoun>
+    <description>The Astartes Power Armor is assisting psychic ability</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>	
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+	<!--100% Meditation psyfocus gain 
+    ///+ 50 % Neural heat recovery rate
+    ///+ 25 % Psychic Sensitivity
+	!-->
+      <stages>
+        <li>
+          <painFactor>0.3</painFactor>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Sight</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.25</offset>
+            </li>			
+          </capMods>
+        </li>
+      </stages>	  
+  </HediffDef>
+  
+  <HediffDef>
+	<defName>GFAA_HediffTechmarine</defName>
+	<hediffClass>Hediff_High</hediffClass>
+    <label>power armor assisted </label>
+    <labelNoun>a power armor assist</labelNoun>
+    <description>The Astartes Power Armor is assisting technical ability</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>	
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+	<!--+ 5 to craft
+    ///+ 50 % to craft/smith/trailor speed
+    ///1+ to craft quality
+	!-->
+      <stages>
+        <li>
+          <painFactor>0.3</painFactor>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Sight</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.25</offset>
+            </li>			
+          </capMods>
+        </li>
+      </stages>	  
+  </HediffDef>
+  
+  <HediffDef>
+	<defName>GFAA_HediffTechmarine</defName>
+	<hediffClass>Hediff_High</hediffClass>
+    <label>power armor assisted </label>
+    <labelNoun>a power armor assist</labelNoun>
+    <description>The Astartes Power Armor is assisting technical ability</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>	
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.75</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+	<!--+5 to social
+    ///+100% suppression
+    ///+75% to social impact
+	!-->
+      <stages>
+        <li>
+          <painFactor>0.3</painFactor>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Sight</capacity>
+              <offset>0.35</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.25</offset>
+            </li>			
+          </capMods>
+        </li>
+      </stages>	  
+  </HediffDef>
+  
+  <HediffDef>
+	<defName>GFAA_HediffInvisibility</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<comps>
+      <li Class="HediffCompProperties">
+        <compClass>HediffComp_Invisibility</compClass>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+    </comps>
+    <label>invisible power armor</label>
+    <labelNoun>labelNoun</labelNoun>
+    <description>description</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+  </HediffDef>
+  
+  <HediffDef>
 	<defName>GFAA_HediffTEST</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<comps>

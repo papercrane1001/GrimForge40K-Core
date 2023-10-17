@@ -22,32 +22,6 @@ namespace Grimforge
     {
         public float GFAA_Cost { get; set; }
     }
-    public abstract class Ability_Active
-    {
-        public Pawn pawn;
-        public string Name { get; set; }
-        public float Cost { get; set; }
-        public string Label { get; set; }
-        public string Description { get; set; }
-
-        public Action Action_ { get; set; }
-
-        public Ability_Active(Pawn wearer)
-        {
-            pawn = wearer;
-        }
-    }
-
-    public class TestActive : Ability_Active
-    {
-        public TestActive(Pawn wearer) : base(wearer)
-        {
-            Name = "TestName";
-
-            Cost = 10f;
-
-            
-        }
-    }
+    
     
 }

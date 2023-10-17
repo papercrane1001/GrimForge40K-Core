@@ -14,30 +14,6 @@ using Verse;
 
 namespace Grimforge
 {
-    /// <summary>
-    /// "Void shield"   Simple shield with massive HP pool but with slow regeneration (entire shield need 1/2 to 1 hours to recharge)
-    /// "Invisibility"
-    /// "Healing specialist"     Aura which speedup tending wounds even tending wounds itself
-    ///+50% speed/quality tend
-    ///+50% success surgery rate
-    ///"Psyker" 
-    ///He can cast spells from mamy magic schools
-    ///100% Meditation psyfocus gain 
-    ///+ 50 % Neural heat recovery rate
-    ///+ 25 % Psychic Sensitivity
-    ///"Techmarine"
-    ///+ 5 to craft
-    ///+ 50 % to craft/smith/trailor speed
-    ///1+ to craft quality
-    ///Chaplain
-    ///+5 to social
-    ///+100% suppression
-    ///+75% to social impact
-
-
-    /// </summary>
-    /// 
-
     public class GFAA_AbilityPassive : Ability
     {
         public bool Active = false;

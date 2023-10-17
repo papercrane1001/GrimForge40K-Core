@@ -56,4 +56,81 @@
 		<DevMode>false</DevMode>
 		<iconPath>TEST/chest</iconPath>
 	</Grimforge.GFAA_PassiveAbilityDef>
+	
+	<Grimforge.GFAA_PassiveAbilityDef>
+		<defName>GFAA_Invisibility</defName>
+		<HediffUsed>GFAA_HediffInvisibility</HediffUsed>
+		<GFAA_Drain>0.02</GFAA_Drain>
+		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
+		<label>Invisibility</label>
+		<description>The armor is making this pawn invisible.</description>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<label>Test1VerbLabel</label>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+			</targetParams>
+		</verbProperties>
+		<DevMode>false</DevMode>
+		<iconPath>TEST/chest</iconPath>
+	</Grimforge.GFAA_PassiveAbilityDef>
+	
+	<Grimforge.GFAA_PassiveAbilityDef>
+		<defName>GFAA_Psyker</defName>
+		<HediffUsed>GFAA_HediffPsyker</HediffUsed>
+		<GFAA_Drain>0.01</GFAA_Drain>
+		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
+		<label>Psyker Boosts</label>
+		<description>The armor is making this pawn crazy.</description>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<label>Test1VerbLabel</label>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+			</targetParams>
+		</verbProperties>
+		<DevMode>false</DevMode>
+		<iconPath>TEST/chest</iconPath>
+	</Grimforge.GFAA_PassiveAbilityDef>
+	
+	<Grimforge.GFAA_PassiveAbilityDef>
+		<defName>GFAA_Techmarine</defName>
+		<HediffUsed>GFAA_HediffPsyker</HediffUsed>
+		<GFAA_Drain>0.01</GFAA_Drain>
+		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
+		<label>Technical Boosts</label>
+		<description>The armor is making this pawn more technically inclined</description>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<label>Test1VerbLabel</label>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+			</targetParams>
+		</verbProperties>
+		<DevMode>false</DevMode>
+		<iconPath>TEST/chest</iconPath>
+	</Grimforge.GFAA_PassiveAbilityDef>
+	
+	<Grimforge.GFAA_PassiveAbilityDef>
+		<defName>GFAA_Chaplain</defName>
+		<HediffUsed>GFAA_HediffChaplain</HediffUsed>
+		<GFAA_Drain>0.01</GFAA_Drain>
+		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
+		<label>Social Boosts</label>
+		<description>The armor is making this pawn more appealing.</description>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<label>Test1VerbLabel</label>
+			<drawAimPie>false</drawAimPie>
+			<targetParams>
+				<canTargetSelf>true</canTargetSelf>
+			</targetParams>
+		</verbProperties>
+		<DevMode>false</DevMode>
+		<iconPath>TEST/chest</iconPath>
+	</Grimforge.GFAA_PassiveAbilityDef>
+	
 </Defs>
