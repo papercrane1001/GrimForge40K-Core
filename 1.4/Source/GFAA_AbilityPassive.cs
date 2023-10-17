@@ -46,22 +46,15 @@ namespace Grimforge
         {
             Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
             hediff.Severity = 0.5f;
-            //hediff.Severity = 1.0f;
             pawn.health.AddHediff(hediff);
         }
         public virtual void TakeHediff()
         {
-            //Hediff hediff = HediffMaker.MakeHediff(HediffUsed, pawn);
             if(pawn.health.hediffSet.hediffs.Where(x => x.def == HediffUsed).Count() > 0)
             {
                 Hediff hediff = pawn.health.hediffSet.hediffs.Where(x => x.def == HediffUsed).First();
                 pawn.health.RemoveHediff(hediff);
             }
-            //Hediff hediff = pawn.health.hediffSet.hediffs.Where(x => x.def == HediffUsed).First();
-            //pawn.health.RemoveHediff(hediff);
-            //Log.Message("# Hediffs: " + pawn.health.hediffSet.hediffs.Count);
-            //pawn.health.hediffSet.
-            
         }
         public virtual void Set(bool state)
         {
@@ -88,7 +81,6 @@ namespace Grimforge
             }
         }
 
-        //public List<GFAA_AbilityPassive> passives;
 
         public float GFAA_Drain { get { return GFAA_abilitydef.GFAA_Drain; } set { GFAA_abilitydef.GFAA_Drain = value; } }
 

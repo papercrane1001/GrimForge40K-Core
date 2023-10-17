@@ -3,7 +3,7 @@
 	<Grimforge.GFAA_PassiveAbilityDef>
 		<defName>GFAA_PoweredMode</defName>
 		<HediffUsed>GFAA_HediffPoweredMode</HediffUsed>
-		<GFAA_Drain>0.1</GFAA_Drain>
+		<GFAA_Drain>0.01</GFAA_Drain>
 		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 		<label>PoweredMode</label>
 		<description>The armor is assisting movement, etc.</description>
@@ -22,7 +22,7 @@
 	<Grimforge.GFAA_PassiveAbilityDef>
 		<defName>GFAA_Overdrive</defName>
 		<HediffUsed>GFAA_HediffOverdrive</HediffUsed>
-		<GFAA_Drain>0.1</GFAA_Drain>
+		<GFAA_Drain>0.01</GFAA_Drain>
 		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 		<label>Overdrive</label>
 		<description>The armor is REALLY assisting movement, etc.</description>
@@ -41,7 +41,7 @@
 	<Grimforge.GFAA_PassiveAbilityDef>
 		<defName>GFAA_HealingSpecialist</defName>
 		<HediffUsed>GFAA_HediffHealingSpecialist</HediffUsed>
-		<GFAA_Drain>0.1</GFAA_Drain>
+		<GFAA_Drain>0.01</GFAA_Drain>
 		<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 		<label>HealingSpecialist</label>
 		<description>The armor is assisting perception, etc.</description>

@@ -6,7 +6,7 @@
   <Grimforge.GFAA_PassiveAbilityDef>
 	<defName>GFAA_TEST</defName>
 	<HediffUsed>GFAA_HediffTEST</HediffUsed>
-	<GFAA_Drain>1.0</GFAA_Drain>
+	<GFAA_Drain>0.1</GFAA_Drain>
 	<abilityClass>Grimforge.GFAA_AbilityPassive</abilityClass>
 	<label>Test1</label>
 	<description>Test1Desc</description>

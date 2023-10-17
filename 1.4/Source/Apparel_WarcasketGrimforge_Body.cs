@@ -29,7 +29,7 @@ namespace Grimforge
                     passives = new List<GFAA_AbilityPassive>();
                     for (int i = 0; i < def.passives.Count; ++i)
                     {
-                        GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[0]);
+                        GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[i]);
                         passives.Add(temp);
                     }
                     return passives;
