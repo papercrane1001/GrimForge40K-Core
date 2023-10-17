@@ -16,7 +16,7 @@
 			</targetParams>
 		</verbProperties>
 		<DevMode>false</DevMode>
-		<iconPath>TEST/chest</iconPath>
+		<iconPath>TEST/chest_east</iconPath>
 	</Grimforge.GFAA_PassiveAbilityDef>
 	
 	<Grimforge.GFAA_PassiveAbilityDef>
@@ -35,7 +35,7 @@
 			</targetParams>
 		</verbProperties>
 		<DevMode>false</DevMode>
-		<iconPath>TEST/chest</iconPath>
+		<iconPath>TEST/helmet</iconPath>
 	</Grimforge.GFAA_PassiveAbilityDef>
 	
 	<Grimforge.GFAA_PassiveAbilityDef>

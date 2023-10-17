@@ -27,7 +27,7 @@ namespace Grimforge
                 if (passives == null)
                 {
                     passives = new List<GFAA_AbilityPassive>();
-                    for(int i = 0; i < def.passives.Count; ++i)
+                    for (int i = 0; i < def.passives.Count; ++i)
                     {
                         GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[0]);
                         passives.Add(temp);
@@ -38,13 +38,13 @@ namespace Grimforge
                 else return passives;
             }
         }
-        
+
         public float GetTotalDrain
         {
             get
             {
                 float totalDrain = 0;
-                for(int i = 0; i < Passives.Count; ++i)
+                for (int i = 0; i < Passives.Count; ++i)
                 {
                     if (Passives[i].Active)
                     {
@@ -104,7 +104,7 @@ namespace Grimforge
         {
             base.Tick();
             energy = GetTotalDrain > energy ? 0 : energy - GetTotalDrain;
-            if(energy <= 0)
+            if (energy <= 0)
             {
                 TurnOffAllPassives();
             }
@@ -112,16 +112,15 @@ namespace Grimforge
 
         public void TurnOffAllPassives()
         {
-            for(int i = 0; i < Passives.Count; ++i)
+            for (int i = 0; i < AllPassiveAbilities.Count; ++i)
             {
-                Passives[i].Set(false);
+                AllPassiveAbilities[i].Set(false);
             }
         }
 
         public override void TickLong()
         {
             base.TickLong();
-            //NOTE: I suspect this is where the actual energy drain will occur.  
         }
 
         public override IEnumerable<Gizmo> GetWornGizmos()
@@ -140,16 +139,20 @@ namespace Grimforge
                 };
                 yield return gizmo_ArmorEnergyStatus;
             }
+            //Log.Message("GetWornGizmos AllPassiveAbilities.Count :" + AllPassiveAbilities.Count);
+            //yield return AllPassiveAbilities[0].gizmo;
+            //yield return AllPassiveAbilities[1].gizmo;
+            //yield return AllPassiveAbilities[2].gizmo;
 
             for (int i = 0; i < AllPassiveAbilities.Count; ++i)
             {
-                if (Prefs.DevMode) { yield return AllPassiveAbilities[i].gizmo; }
-                else if (!AllPassiveAbilities[i].DevMode) { yield return AllPassiveAbilities[i].gizmo; }
-
+                //if (Prefs.DevMode) { yield return AllPassiveAbilities[i].gizmo; }
+                //else if (!AllPassiveAbilities[i].DevMode) { yield return AllPassiveAbilities[i].gizmo; }
+                yield return AllPassiveAbilities[i].gizmo;
             }
 
         }
-        
+
 
         public override void ExposeData()
         {

@@ -23,21 +23,5 @@
 	</Grimforge.GFAA_PassiveAbilityDef>
 	
 	
-	<HediffDef>
-	<defName>GFAA_HediffTEST</defName>
-	<hediffClass>HediffWithComps</hediffClass>
-	<comps>
-      <li Class="HediffCompProperties">
-        <compClass>HediffComp_Invisibility</compClass>
-      </li>
-      <li Class="HediffCompProperties_DisappearsOnDeath" />
-    </comps>
-    <label>power armor assisted TEST</label>
-    <labelNoun>TEST a power armor assist</labelNoun>
-    <description>TESTESTTEST</description>
-    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
-    <scenarioCanAdd>true</scenarioCanAdd>
-    <maxSeverity>1.0</maxSeverity>
-    <isBad>false</isBad>
-  </HediffDef>
+	
 </Defs>
