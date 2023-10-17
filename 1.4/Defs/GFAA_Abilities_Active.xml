@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+
+
+<!--
+	<AbilityDef>
+		<defName>GFAA_AddEnergy</defName>
+		
+	</AbilityDef>
+!-->
+
+
+
+
+
+
 	<AbilityDef>
 		<defName>GFAA_PowerJump</defName>
 		<abilityClass>Grimforge.GFAA_AbilityActive</abilityClass>

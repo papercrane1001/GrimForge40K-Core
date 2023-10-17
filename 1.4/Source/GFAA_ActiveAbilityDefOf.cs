@@ -28,5 +28,12 @@ namespace Grimforge
     public class GFAA_ActiveAbilityDefOf
     {
         public static GFAA_ActiveAbilityDef GFAA_PowerJump;
+        public static GFAA_ActiveAbilityDef GFAA_AddEnergy;
+        public static GFAA_ActiveAbilityDef GFAA_TakeEnergy;
+        //public static GFAA_ActiveAbilityDef GFAA_FragOut;
+        //public static GFAA_ActiveAbilityDef GFAA_KrakOut;
+        //public static GFAA_ActiveAbilityDef GFAA_FireOnMyMark;
+        //public static GFAA_ActiveAbilityDef GFAA_Charge;
+        //public static GFAA_ActiveAbilityDef GFAA_GrapplingHook;
     }
 }
