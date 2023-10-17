@@ -17,7 +17,7 @@ namespace Grimforge
         //public List<Ability_Active> ac
         //public List<Ability_Passive> passive_Abilities = new List<Ability_Passive>();
         public List<GFAA_PassiveAbilityDef> passives;
-
+        public List<GFAA_ActiveAbilityDef> actives;
 
 
     }

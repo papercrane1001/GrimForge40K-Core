@@ -9,15 +9,24 @@ using Verse;
 
 namespace Grimforge
 {
+    /// <summary>
+    /// "Frag Grenade" Simple damage ability with small/medium size AOE
+    /// Krak Grenade Simple anti armor grenade, single target
+    /// "Fire on my mark" Aura which gives less aim time and higher accuracy
+    /// "Charge!"     Aura which gives melee attack cooldown reduction, dodge chance, bonus movement speed, automatic switch weapons to melee (if possible) (if its possible to code)
+    /// "Grappling hook"     Dash which need to be "connect" to wall
+    /// </summary>
+    /// 
     public class GFAA_ActiveAbilityDef : AbilityDef
     {
-        public float GFAA_Drain;
-        public bool DevMode;
+        public float GFAA_DrainOnEnergy = 0;
+        public float GFAA_ChunkOfEnergy;
+        public bool DevMode = false;
     }
 
     [DefOf]
     public class GFAA_ActiveAbilityDefOf
     {
-        //public static AbilityDef GFAA_
+        public static GFAA_ActiveAbilityDef GFAA_PowerJump;
     }
 }

@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<AbilityDef>
+		<defName>GFAA_PowerJump</defName>
+		<abilityClass>Grimforge.GFAA_AbilityActive</abilityClass>
+		<label>Grimforge Longjump</label>
+		<description>Jump to a distant location using the Adeptus Astartes Armor</description>
+		<iconPath>Decals/chest_dec1_south</iconPath>
+		<cooldownTicksRange>100</cooldownTicksRange>
+		<hostile>false</hostile>
+		<verbProperties>
+			<verbClass>Verb_CastAbilityJump</verbClass>
+			<label>jump</label>
+			<violent>false</violent>
+			<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+			<warmupTime>0.5</warmupTime>
+			<minRange>5.9</minRange>
+			<range>9.9</range>
+			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>Longjump_Jump</soundCast>
+			<soundLanding>Longjump_Land</soundLanding>
+			<flyWithCarriedThing>false</flyWithCarriedThing>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
+		</verbProperties>
+	</AbilityDef>
 
 </Defs>

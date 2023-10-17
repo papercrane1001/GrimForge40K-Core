@@ -38,6 +38,23 @@ namespace Grimforge
                 else return passives;
             }
         }
+        public List<GFAA_AbilityActive> actives;
+        public List<GFAA_AbilityActive> Actives
+        {
+            get
+            {
+                if(actives == null)
+                {
+                    actives = new List<GFAA_AbilityActive>();
+                    for(int i = 0; i < def.actives.Count; ++i)
+                    {
+                        actives.Add(new GFAA_AbilityActive(Wearer, def.actives[i]));
+                    }
+                    return actives;
+                }
+                else return actives;
+            }
+        }
 
         public float GetTotalDrain
         {

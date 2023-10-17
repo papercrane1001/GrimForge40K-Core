@@ -196,7 +196,7 @@
   </HediffDef>
   
   <HediffDef>
-	<defName>GFAA_HediffTechmarine</defName>
+	<defName>GFAA_HediffChaplain</defName>
 	<hediffClass>Hediff_High</hediffClass>
     <label>power armor assisted </label>
     <labelNoun>a power armor assist</labelNoun>
