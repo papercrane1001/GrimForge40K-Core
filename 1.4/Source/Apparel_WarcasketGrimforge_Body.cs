@@ -15,7 +15,24 @@ namespace Grimforge
     {
 
         private float energy = 50;
-        public Apparel_Warcasket helm;
+        public Apparel_WarcasketGrimforge_Helm _hel;
+        public Apparel_WarcasketGrimforge_Helm helm
+        {
+            get
+            {
+                if (_hel != null) { return _hel; }
+                for(int i = 0;i < Wearer.apparel.WornApparel.Count; ++i)
+                {
+                    if (Wearer.apparel.wornApparel[i] is Apparel_WarcasketGrimforge_Helm)
+                    {
+                        _hel = (Apparel_WarcasketGrimforge_Helm)Wearer.apparel.wornApparel[i];
+                        return _hel;
+                    }
+                }
+                return null;
+            }
+        }
+        public 
         public Apparel_Warcasket pads;
 
         public List<GFAA_AbilityPassive> passives;
@@ -63,9 +80,9 @@ namespace Grimforge
                 float totalDrain = 0;
                 for (int i = 0; i < Passives.Count; ++i)
                 {
-                    if (Passives[i].Active)
+                    if (AllPassiveAbilities[i].Active)
                     {
-                        totalDrain += Passives[i].GFAA_Drain;
+                        totalDrain += AllPassiveAbilities[i].GFAA_Drain;
                     }
                 }
                 return totalDrain;
@@ -76,8 +93,6 @@ namespace Grimforge
         {
             get
             {
-                //Debug
-
                 List<GFAA_AbilityPassive> list = Passives;
                 if (helm != null && helm is Apparel_WarcasketGrimforge_Helm)
                 {
@@ -95,11 +110,33 @@ namespace Grimforge
                         list.AddRange(pad.Passives);
                     }
                 }
-
                 return list;
             }
         }
-
+        public List<GFAA_AbilityActive> AllActiveAbilities
+        {
+            get
+            {
+                List<GFAA_AbilityActive> list = Actives;
+                if (helm != null && helm is Apparel_WarcasketGrimforge_Helm)
+                {
+                    Apparel_WarcasketGrimforge_Helm hel = (Apparel_WarcasketGrimforge_Helm)helm;
+                    if (hel.Passives != null)
+                    {
+                        list.AddRange(hel.Actives);
+                    }
+                }
+                if (pads != null && pads is Apparel_WarcasketGrimforge_Pads)
+                {
+                    Apparel_WarcasketGrimforge_Pads pad = (Apparel_WarcasketGrimforge_Pads)pads;
+                    if (pad.Passives != null)
+                    {
+                        list.AddRange(pad.Actives);
+                    }
+                }
+                return list;
+            }
+        }
 
 
         public float MaxEnergy { get { return def.maxEnergyAmount; } set { def.maxEnergyAmount = value; } }
@@ -166,6 +203,10 @@ namespace Grimforge
                 //if (Prefs.DevMode) { yield return AllPassiveAbilities[i].gizmo; }
                 //else if (!AllPassiveAbilities[i].DevMode) { yield return AllPassiveAbilities[i].gizmo; }
                 yield return AllPassiveAbilities[i].gizmo;
+            }
+            for(int i = 0; i < AllActiveAbilities.Count; ++i)
+            {
+                yield return AllActiveAbilities[i].gizmo;
             }
 
         }

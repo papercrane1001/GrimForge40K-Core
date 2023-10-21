@@ -24,13 +24,22 @@ namespace Grimforge
             def = (AbilityDef)ability;
             GFAA_ActiveDef = ability;
 
-            gizmo = new Command_ActionWithCooldown()
+            //gizmo = new Command_ActionWithCooldown()
+            //{
+            //    defaultLabel = ability.label,
+            //    defaultDesc = ability.description,
+            //    icon = ContentFinder<Texture2D>.Get(def.iconPath),
+            //    action = () => { }
+            //};
+        }
+
+
+        public override bool CanCast //=> base.CanCast;
+        {
+            get
             {
-                defaultLabel = ability.label,
-                defaultDesc = ability.description,
-                icon = ContentFinder<Texture2D>.Get(def.iconPath),
-                action = () => { }
-            };
+
+            }
         }
     }
     

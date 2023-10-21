@@ -8,13 +8,7 @@
 		
 	</AbilityDef>
 !-->
-
-
-
-
-
-
-	<AbilityDef>
+	<Grimforge.GFAA_ActiveAbilityDef>
 		<defName>GFAA_PowerJump</defName>
 		<abilityClass>Grimforge.GFAA_AbilityActive</abilityClass>
 		<label>Grimforge Longjump</label>
@@ -33,13 +27,16 @@
 			<requireLineOfSight>true</requireLineOfSight>
 			<soundCast>Longjump_Jump</soundCast>
 			<soundLanding>Longjump_Land</soundLanding>
-			<flyWithCarriedThing>false</flyWithCarriedThing>
+			<flyWithCarriedThing>true</flyWithCarriedThing>
 			<targetParams>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetPawns>false</canTargetPawns>
 				<canTargetBuildings>false</canTargetBuildings>
 			</targetParams>
 		</verbProperties>
-	</AbilityDef>
+		<GFAA_DrainOnEnergy>0</GFAA_DrainOnEnergy>
+		<GFAA_ChunkOfEnergy>10</GFAA_ChunkOfEnergy>
+		<DevMode>false</DevMode>
+	</Grimforge.GFAA_ActiveAbilityDef>
 
 </Defs>

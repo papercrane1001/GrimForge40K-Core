@@ -19,9 +19,11 @@ namespace Grimforge
     /// 
     public class GFAA_ActiveAbilityDef : AbilityDef
     {
-        public float GFAA_DrainOnEnergy = 0;
+        //public float GFAA_DrainOnEnergy = 0;
+        public float GFAA_DrainOnEnergy;
         public float GFAA_ChunkOfEnergy;
         public bool DevMode = false;
+        //public bool DevMode;
     }
 
     [DefOf]
