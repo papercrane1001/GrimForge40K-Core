@@ -18,11 +18,15 @@ namespace Grimforge
                 if (passives == null)
                 {
                     passives = new List<GFAA_AbilityPassive>();
-                    for (int i = 0; i < def.passives.Count; ++i)
+                    if(def.passives != null)
                     {
-                        GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[0]);
-                        passives.Add(temp);
+                        for (int i = 0; i < def.passives.Count; ++i)
+                        {
+                            GFAA_AbilityPassive temp = new GFAA_AbilityPassive(Wearer, def.passives[0]);
+                            passives.Add(temp);
+                        }
                     }
+                    
                     return passives;
 
                 }
@@ -38,10 +42,14 @@ namespace Grimforge
                 if (actives == null)
                 {
                     actives = new List<GFAA_AbilityActive>();
-                    for (int i = 0; i < def.actives.Count; ++i)
+                    if(def.actives != null)
                     {
-                        actives.Add(new GFAA_AbilityActive(Wearer, def.actives[i]));
+                        for (int i = 0; i < def.actives.Count; ++i)
+                        {
+                            actives.Add(new GFAA_AbilityActive(Wearer, def.actives[i]));
+                        }
                     }
+                    
                     return actives;
                 }
                 else return actives;

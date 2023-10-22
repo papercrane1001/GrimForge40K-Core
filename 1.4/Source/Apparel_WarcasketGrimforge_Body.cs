@@ -16,6 +16,7 @@ namespace Grimforge
 
         private float energy = 50;
         public Apparel_WarcasketGrimforge_Helm _hel;
+        //public bool 
         public Apparel_WarcasketGrimforge_Helm helm
         {
             get
@@ -23,17 +24,32 @@ namespace Grimforge
                 if (_hel != null) { return _hel; }
                 for(int i = 0;i < Wearer.apparel.WornApparel.Count; ++i)
                 {
-                    if (Wearer.apparel.wornApparel[i] is Apparel_WarcasketGrimforge_Helm)
+                    if (Wearer.apparel.wornApparel[i] is Apparel_WarcasketGrimforge_Helm helm)
                     {
-                        _hel = (Apparel_WarcasketGrimforge_Helm)Wearer.apparel.wornApparel[i];
+                        _hel = helm;
                         return _hel;
                     }
                 }
                 return null;
             }
         }
-        public 
-        public Apparel_Warcasket pads;
+        public Apparel_WarcasketGrimforge_Pads _ads;
+        public Apparel_Warcasket pads
+        {
+            get
+            {
+                if (_ads != null) { return _ads; }
+                for(int i = 0; i < Wearer.apparel.WornApparel.Count; ++i)
+                {
+                    if (Wearer.apparel.WornApparel[i] is Apparel_WarcasketGrimforge_Pads pads)
+                    {
+                        _ads = pads;
+                        return _ads;
+                    }
+                }
+                return null;
+            }
+        }
 
         public List<GFAA_AbilityPassive> passives;
         public List<GFAA_AbilityPassive> Passives
@@ -63,10 +79,13 @@ namespace Grimforge
                 if(actives == null)
                 {
                     actives = new List<GFAA_AbilityActive>();
-                    for(int i = 0; i < def.actives.Count; ++i)
+                    if(def.actives != null)
                     {
-                        actives.Add(new GFAA_AbilityActive(Wearer, def.actives[i]));
-                    }
+                        for (int i = 0; i < def.actives.Count; ++i)
+                        {
+                            actives.Add(new GFAA_AbilityActive(Wearer, def.actives[i]));
+                        }
+                    }                    
                     return actives;
                 }
                 else return actives;
@@ -89,6 +108,22 @@ namespace Grimforge
             }
         }
 
+        //public override void Notify_Equipped(Pawn pawn)
+        //{
+        //    base.Notify_Equipped(pawn);
+
+        //}
+
+        //public override ti
+
+        public override void Notify_Unequipped(Pawn pawn)
+        {
+            base.Notify_Unequipped(pawn);
+
+
+        }
+
+
         public List<GFAA_AbilityPassive> AllPassiveAbilities
         {
             get
@@ -97,7 +132,7 @@ namespace Grimforge
                 if (helm != null && helm is Apparel_WarcasketGrimforge_Helm)
                 {
                     Apparel_WarcasketGrimforge_Helm hel = (Apparel_WarcasketGrimforge_Helm)helm;
-                    if (hel.Passives != null)
+                    if (hel.Passives != null && hel.Passives.Count > 0)
                     {
                         list.AddRange(hel.Passives);
                     }
@@ -105,7 +140,7 @@ namespace Grimforge
                 if (pads != null && pads is Apparel_WarcasketGrimforge_Pads)
                 {
                     Apparel_WarcasketGrimforge_Pads pad = (Apparel_WarcasketGrimforge_Pads)pads;
-                    if (pad.Passives != null)
+                    if (pad.Passives != null && pad.Passives.Count > 0)
                     {
                         list.AddRange(pad.Passives);
                     }
@@ -172,18 +207,42 @@ namespace Grimforge
             }
         }
 
-        public override void TickLong()
-        {
-            base.TickLong();
-        }
+        //public override void TickLong()
+        //{
+        //    base.TickLong();
+        //    Log.Message("TickLong");
+        //    for (int i = 0; i < AllActiveAbilities.Count; i++)
+        //    {
+        //        if (!Wearer.abilities.abilities.Contains(AllActiveAbilities[i]))
+        //        {
+        //            //GFAA_AbilityActive ability = AbilityUtility.MakeAbility()
+        //            Log.Message("Ping adding ability");
+        //            Wearer.abilities.abilities.Add(AllActiveAbilities[i]);
+        //        }
+        //    }
+
+        //}
 
         public override IEnumerable<Gizmo> GetWornGizmos()
         {
+            for (int i = 0; i < AllActiveAbilities.Count; i++)
+            {
+                if (!Wearer.abilities.abilities.Contains(AllActiveAbilities[i]))
+                {
+                    //GFAA_AbilityActive ability = AbilityUtility.MakeAbility()
+                    Log.Message("Ping adding ability");
+                    Wearer.abilities.abilities.Add(AllActiveAbilities[i]);
+                }
+            }
+
+
             //Log.Message("GetWornGizmos in Body firing");
             foreach (var gizmo in base.GetWornGizmos())
             {
                 yield return gizmo;
             }
+            //Log.Message("base.GetWornGizmos() done");
+
 
             if (Find.Selector.SingleSelectedThing == Wearer && Wearer.IsColonistPlayerControlled)
             {
@@ -193,10 +252,6 @@ namespace Grimforge
                 };
                 yield return gizmo_ArmorEnergyStatus;
             }
-            //Log.Message("GetWornGizmos AllPassiveAbilities.Count :" + AllPassiveAbilities.Count);
-            //yield return AllPassiveAbilities[0].gizmo;
-            //yield return AllPassiveAbilities[1].gizmo;
-            //yield return AllPassiveAbilities[2].gizmo;
 
             for (int i = 0; i < AllPassiveAbilities.Count; ++i)
             {
@@ -204,10 +259,10 @@ namespace Grimforge
                 //else if (!AllPassiveAbilities[i].DevMode) { yield return AllPassiveAbilities[i].gizmo; }
                 yield return AllPassiveAbilities[i].gizmo;
             }
-            for(int i = 0; i < AllActiveAbilities.Count; ++i)
-            {
-                yield return AllActiveAbilities[i].gizmo;
-            }
+            //for (int i = 0; i < AllActiveAbilities.Count; ++i)
+            //{
+            //    yield return AllActiveAbilities[i].gizmo;
+            //}
 
         }
 
