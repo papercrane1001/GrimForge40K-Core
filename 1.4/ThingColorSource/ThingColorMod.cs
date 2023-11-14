@@ -3,6 +3,7 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
@@ -10,6 +11,66 @@ using Verse.Sound;
 
 namespace ThingColor
 {
+    [StaticConstructorOnStartup]
+    public static class ThingColorMod
+    {
+        static ThingColorMod()
+        {
+            //new Harmony("ThingColorMod").PatchAll();
+            var h = new Harmony("ThingColorMod");
+            h.PatchAll();
+
+            if (ModLister.HasActiveModWithName("Humanoid Alien Races"))
+            {
+                h.PatchHAR();
+            }
+            else h.Patch(AccessTools.Method(typeof(ApparelGraphicRecordGetter), "TryGetGraphicApparel"), transpiler: new HarmonyMethod(typeof(TryGetGraphicApparel_DrawColorTwo_Patch).GetMethod("Transpiler")));
+        }
+
+        public static void PatchHAR(this Harmony h)
+        {
+            h.Patch(AccessTools.Method(typeof(AlienRace.ApparelGraphics.ApparelGraphicUtility), "GetGraphic"), transpiler: new HarmonyMethod(typeof(ApparelGraphicUtility_GetGraphic_Patch).GetMethod("AlienRaceTranspiler")));
+            Log.Message("<color=#ff9944>[GF40K]</color> Patched AlienRaces.");
+        }
+
+        public static Color? GetColorFor(this Thing thing, List<StuffCategoryDef> colorStuff)
+        {
+            if (colorStuff.NullOrEmpty()) return null;
+
+            ThingDef stuff = thing.Stuff;
+
+            if (stuff != null && stuff.stuffProps?.categories != null)
+            {
+                foreach (StuffCategoryDef category in stuff.stuffProps.categories)
+                {
+                    if (colorStuff.Contains(category))
+                    {
+                        return stuff.stuffProps.color;
+                    }
+                }
+            }
+            if (thing.def.CostList != null)
+            {
+                foreach (ThingDefCountClass cost in thing.def.CostList)
+                {
+                    if (cost.thingDef.stuffProps?.categories != null)
+                    {
+                        foreach (StuffCategoryDef category2 in cost.thingDef.stuffProps.categories)
+                        {
+                            if (colorStuff.Contains(category2))
+                            {
+                                return cost.thingDef.stuffProps.color;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+    }
+
+
+
     public class ThingExtension : DefModExtension
     {
         public List<StuffCategoryDef> colorOneStuff;
@@ -55,9 +116,11 @@ namespace ThingColor
     [HarmonyPatch(typeof(CompColorable), "Recolor")]
     public static class CompColorable_Recolor_Patch
     {
-        public static void Prefix(CompColorable __instance)
+        public static bool Prefix(CompColorable __instance)
         {
             var apparel = __instance.parent as ApparelColored;
+            if (apparel?.DesiredColor == null && apparel?.DesiredColorTwo == null) return false;
+
             if (apparel?.DesiredColorTwo != null)
             {
                 apparel.ColorTwo = apparel.DesiredColorTwo.Value;
@@ -67,6 +130,7 @@ namespace ThingColor
                     __instance.desiredColor = __instance.Color;
                 }
             }
+            return true;
         }
     }
 
@@ -130,6 +194,7 @@ namespace ThingColor
             Dialog_StylingStation_DrawPawn_Patch.tmpOriginalColors.Clear();
         }
     }
+    
     [HotSwappable]
     [HarmonyPatch(typeof(Dialog_StylingStation), "ApplyApparelColors")]
     public static class Dialog_StylingStation_ApplyApparelColors_Patch
@@ -361,59 +426,19 @@ namespace ThingColor
             Widgets.EndScrollView();
         }
     }
-    [StaticConstructorOnStartup]
-    public static class ThingColorMod
-    {
-        static ThingColorMod()
-        {
-            new Harmony("ThingColorMod").PatchAll();
-        }
 
-        public static Color? GetColorFor(this Thing thing, List<StuffCategoryDef> colorStuff)
-        {
-            if (colorStuff.NullOrEmpty()) return null;
-
-            ThingDef stuff = thing.Stuff;
-
-            if (stuff != null && stuff.stuffProps?.categories != null)
-            {
-                foreach (StuffCategoryDef category in stuff.stuffProps.categories)
-                {
-                    if (colorStuff.Contains(category))
-                    {
-                        return stuff.stuffProps.color;
-                    }
-                }
-            }
-            if (thing.def.CostList != null)
-            {
-                foreach (ThingDefCountClass cost in thing.def.CostList)
-                {
-                    if (cost.thingDef.stuffProps?.categories != null)
-                    {
-                        foreach (StuffCategoryDef category2 in cost.thingDef.stuffProps.categories)
-                        {
-                            if (colorStuff.Contains(category2))
-                            {
-                                return cost.thingDef.stuffProps.color;
-                            }
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-    }
-
-    [HarmonyPatch(typeof(ApparelGraphicRecordGetter), "TryGetGraphicApparel")]
-    public static class TryGetGraphicApparel_UnderHelmet_DrawColorTwo
+    //[HarmonyPatch(typeof(ApparelGraphicRecordGetter), "TryGetGraphicApparel")]
+    public static class TryGetGraphicApparel_DrawColorTwo_Patch
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
+            MethodInfo originalMethod = AccessTools.Method(typeof(GraphicDatabase), "Get", new[] { typeof(string), typeof(Shader), typeof(Vector2), typeof(Color) }, new[] { typeof(Graphic_Multi) });
+
             var codes = new List<CodeInstruction>(instructions);
 
             for (int i = 0; i < codes.Count; i++)
             {
+                /*
                 yield return codes[i];
 
                 if (codes[i].operand is not null && codes[i].operand.ToString().Contains("DrawColor"))
@@ -430,6 +455,53 @@ namespace ThingColor
                     }
                     i += 1; // skip the other call
                 }
+                */
+                if (codes[i].Calls(originalMethod))
+                {
+                    var injected = new List<CodeInstruction>()
+                    {
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Thing), "DrawColorTwo")),
+                        new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(GraphicDatabase), "Get", new Type[] { typeof(string), typeof(Shader), typeof(Vector2), typeof(Color), typeof(Color), }, new Type[] { typeof(Graphic_Multi) }))
+                    };
+                    foreach (CodeInstruction c in injected)
+                    {
+                        yield return c;
+                    }
+                    continue; // don't yield the old Get<>
+                }
+                yield return codes[i];
+            }
+        }
+    }
+
+    // Add ColorTwo to AlienRace patch
+    //[HarmonyPatch(typeof(AlienRace.ApparelGraphics.ApparelGraphicUtility), "GetGraphic")]
+    public static class ApparelGraphicUtility_GetGraphic_Patch
+    {
+        public static IEnumerable<CodeInstruction> AlienRaceTranspiler(IEnumerable<CodeInstruction> instructions)
+        {
+            MethodInfo originalMethod = AccessTools.Method(typeof(GraphicDatabase), "Get", new[] { typeof(string), typeof(Shader), typeof(Vector2), typeof(Color) }, new[] { typeof(Graphic_Multi) });
+
+            var codes = new List<CodeInstruction>(instructions);
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                if (codes[i].Calls(originalMethod))
+                {
+                    var injected = new List<CodeInstruction>()
+                    {
+                        new CodeInstruction(OpCodes.Ldarg_S, 4), // erdelf taught me how to use Ldarg_S, very nice. this one references the apparel arg.
+                        new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Thing), "DrawColorTwo")),
+                        new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(GraphicDatabase), "Get", new Type[] { typeof(string), typeof(Shader), typeof(Vector2), typeof(Color), typeof(Color), }, new Type[] { typeof(Graphic_Multi) }))
+                    };
+                    foreach (CodeInstruction c in injected)
+                    {
+                        yield return c;
+                    }
+                    continue; // don't yield the old Get<>
+                }
+                yield return codes[i];
             }
         }
     }
